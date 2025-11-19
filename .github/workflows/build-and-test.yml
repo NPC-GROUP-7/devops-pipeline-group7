@@ -16,12 +16,10 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
-    # Status check identifier: build-and-test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Example: Node.js / adjust or replace for Python/Java/.NET
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -37,6 +35,10 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Ensure artifact directories exist
+        run: |
+          mkdir -p test-results coverage reports
+
       - name: Upload test results (JUnit)
         if: always()
         uses: actions/upload-artifact@v4
@@ -46,3 +48,4 @@ jobs:
             ./test-results
             ./coverage
             ./reports
+          if-no-files-found: ignore
