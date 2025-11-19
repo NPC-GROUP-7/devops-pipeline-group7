@@ -1,4 +1,3 @@
-```yaml
 name: CodeQL
 
 on:
@@ -22,11 +21,7 @@ jobs:
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
-        with:
-          languages: javascript  # adjust: javascript, python, java, go, etc.
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+        # No languages specified - will auto-detect GitHub Actions workflows
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
