@@ -1,4 +1,3 @@
-```yaml
 name: Build and Test
 
 on:
@@ -43,4 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: ./test-results || ./coverage || ./reports || ''
+          path: |
+            ./test-results
+            ./coverage
+            ./reports
